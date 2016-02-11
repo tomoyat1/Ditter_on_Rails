@@ -1,0 +1,39 @@
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-push-4">
+      <h1>新規登録</h1>
+      <!-- フォーム部分 -->
+	  <%= form_for @user do |f| %>
+	  <div class="form-group">
+		<%= f.label :user_name, "ユーザ名（必須）" %>
+		<%= f.text_field :user_name, :class => "form-control", :placeholder => "3文字以上15文字以下" %>
+	  </div>
+	  <p>
+		<%= f.label :screen_name, "ユーザID（必須）" %>
+		<%= f.text_field :screen_name, :class => "form-control", :placeholder => "3文字以上15文字以下" %>
+	  </p>
+	  <p>
+		<%= f.label :email, "メールアドレス（必須）" %>
+		<%= f.text_field :email, :class => "form-control" %>
+	  </p>
+	  <p>
+		<%= f.label :password, "パスワード（必須）" %>
+		<%= f.text_field :password, :class => "form-control", :placeholder => "4文字以上8文字以下" %>
+	  </p>
+	  <p>
+		<%= f.label :comment, "一言" %>
+		<%= f.text_area :comment, :class => "form-control", :placeholder => "140文字以内", :rows => "3", :style => "resize:none" %>
+	  </p>
+	  <p>
+		<%= button_tag( class: "btn btn-default ") do %>
+		<%= content_tag :span, "新規登録" %>
+		<% end %>
+	  </p>
+
+	  <% end %>
+      <!-- ログイン画面へのリンク -->
+      <p>ログインは<%= link_to "こちら", "/" %></p>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
