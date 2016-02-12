@@ -1,0 +1,24 @@
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-push-4">
+      <h1>サインイン</h1>
+	  <%= form_for(:session, url: signin_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "パスワード" %>
+        <%= f.text_field :password, :class => "form-control", :placeholder => "4文字以上8文字以下" %>
+      </div>
+      <p>
+        <%= button_tag( class: "btn btn-default ") do %>
+        <%= content_tag :span, "サインイン" %>
+        <% end %>
+      </p>
+      <% end %>
+
+      <p>新規登録は<%= link_to "こちら", signup_path %></p>
+    </div>
+  </div>
+</div>
