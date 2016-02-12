@@ -8,22 +8,22 @@
 		<%= f.label :user_name, "ユーザ名（必須）" %>
 		<%= f.text_field :user_name, :class => "form-control", :placeholder => "3文字以上15文字以下" %>
 	  </div>
-	  <p>
+	  <div class="form-group">
 		<%= f.label :screen_name, "ユーザID（必須）" %>
 		<%= f.text_field :screen_name, :class => "form-control", :placeholder => "3文字以上15文字以下" %>
-	  </p>
-	  <p>
+	  </div>
+	  <div class="form-group">
 		<%= f.label :email, "メールアドレス（必須）" %>
 		<%= f.text_field :email, :class => "form-control" %>
-	  </p>
-	  <p>
+	  </div>
+	  <div class="form-group">
 		<%= f.label :password, "パスワード（必須）" %>
 		<%= f.text_field :password, :class => "form-control", :placeholder => "4文字以上8文字以下" %>
-	  </p>
-	  <p>
+	  </div>
+	  <div class="form-group">
 		<%= f.label :comment, "一言" %>
 		<%= f.text_area :comment, :class => "form-control", :placeholder => "140文字以内", :rows => "3", :style => "resize:none" %>
-	  </p>
+	  </div>
 	  <p>
 		<%= button_tag( class: "btn btn-default ") do %>
 		<%= content_tag :span, "新規登録" %>
