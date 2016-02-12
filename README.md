@@ -2,9 +2,10 @@
 - Ruby 2.1.7
 - Rails 4.0.2
 
-#Installation
+#Instruction
 ```
 $ bundle
+$ rake db:migrate
 ```
 
 #Run
