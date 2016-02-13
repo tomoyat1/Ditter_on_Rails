@@ -21,9 +21,9 @@ class SessionsController < ApplicationController
 
   def authenticate(user)
     if user.password === params[:session][:password]
-      return true
+      true
     else
-      return false
+      false
     end
   end
 
