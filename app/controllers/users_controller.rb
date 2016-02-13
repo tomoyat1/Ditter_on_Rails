@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.find_by(id: session[:user_id])
-    if @user.nil?
+    if !signed_in?
       redirect_to signin_path
     end
   end

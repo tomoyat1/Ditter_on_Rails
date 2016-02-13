@@ -1,6 +1,6 @@
 <style>
   body {
-    padding-top: 70px;
+  padding-top: 70px;
   }
 </style>
 
@@ -18,17 +18,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">ホーム</a></li>
-        <li><a href="./reply.php">返信</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#postModal">
-            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 投稿
+          投稿
           </button>
         </li>
         <li>
-          <a href=""><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 更新</a>
+		  <%= link_to "更新", users_path %>
         </li>
         <li>
           <%= link_to "サインアウト", signout_path, method: :delete %>
@@ -49,35 +48,13 @@
         <h4 class="modal-title" id="postModalLabel">新規投稿</h4>
       </div>
       <div class="modal-body">
-        <form action="index.php" method="post">
-          <div class="form-group">
-            <label for="postText" class="control-label">メッセージ（140字まで）：</label>
-            <textarea class="form-control" id="postText" name="postText" maxlength="140"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">投稿する</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- replyModal -->
-<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="replyModalLabel">リプライ</h4>
-      </div>
-      <div class="modal-body">
-        <form action="index.php" method="post">
-          <div class="form-group">
-            <label for="replyText" class="control-label">メッセージ（140字まで）：</label>
-            <textarea class="form-control" id="replyText" name="postText" maxlength="140"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">返信する</button>
-        </form>
+		<%= form_for [@current_user, @current_user.posts.build] do |f| %>
+		<div class="form-group">
+		  <%= f.label :text, "メッセージ（140字まで）" %>
+		  <%= f.text_area :text, :class => "form-control", :maxlength => "140" %>
+		  </div>
+		  <%= f.submit '投稿する', :class => "btn btn-primary" %>
+		<% end %>
       </div>
     </div>
   </div>
@@ -108,42 +85,21 @@
         </div>
         <!-- List group -->
         <ul class="list-group">
-          <li class="list-group-item">
+		  <% @current_user.posts.reverse_each do |post| %>
+		  <% if post.id != nil %>
+		  <li class="list-group-item">
             <div class="container-fluid">
-              <h5>user_name</h5>
-              <p class="small text-muted reply-to">@screen_name</p>
-              <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-              <p class="small">created_at: 2015/9/30 17:49:11</p>
+              <h5><%= @current_user.user_name %></h5>
+              <p class="small text-muted reply-to">@<%= @current_user.screen_name %></p>
+              <p><%= post.text %></p>
+              <p class="small">created_at: <%= post.created_at %></p>
               <p class="text-right">
-                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true"></span>　返信する
-                </button>
-                <a href="">
-                  <button type="submit" class="btn btn-danger" name="delete_post">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>　削除する
-                  </button>
-                </a>
+				<%= link_to "削除する", user_post_path(post.user_id, post.id), method: :delete, :class => "btn btn-danger" %> 
               </p>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="container-fluid">
-              <h5>user_name</h5>
-              <p class="small text-muted reply-to">@screen_name</p>
-              <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-              <p class="small">created_at: 2015/9/30 17:49:11</p>
-              <p class="text-right">
-                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true"></span>　返信する
-                </button>
-                <a href="">
-                  <button type="submit" class="btn btn-danger" name="delete_post">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>　削除する
-                  </button>
-                </a>
-              </p>
-            </div>
-          </li>
+		  <% end %>
+		  <% end %>
         </ul>
       </div>
       <!-- 前へ・次へ表示領域 -->
@@ -172,13 +128,13 @@
 		</div>
 		<div class="panel-body">
 		  <h4 class="leader">
-			user_name
+			<%= @current_user.user_name %>
 		  </h4>
 		  <p class="small text-muted">
-			@screen_name
+			@<%= @current_user.screen_name %>
 		  </p>
 		  <p>
-			comment: 自己紹介的なやつ
+			<%= @current_user.comment %>
 		  </p>
 		</div>
 	  </div>

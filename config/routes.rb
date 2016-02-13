@@ -4,7 +4,9 @@ DitterOnRails::Application.routes.draw do
   get "signin"  =>  "sessions#new"
   post "signin"  =>  "sessions#create"
   delete "signout"  =>  "sessions#destroy"
-  resources :users
+  resources :users do
+    resources :posts, only: [:create, :destroy]
+  end
 
   root 'users#index'
 
