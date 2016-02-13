@@ -1,14 +1,41 @@
-#Versions
+#Ditter on Rails
+
+Ditter is a Twitter-ish application.
+
+I developed this based on the [DIT textbook](https://github.com/dit-rohm/textbook).
+
+This has been provided in the CC License by DIT since 2015.
+
+![License](http://creativecommons.org/licenses/by-nc/4.0/)
+
+###Versions
 - Ruby 2.1.7
 - Rails 4.0.2
 
-#Instruction
+###Getting started
+
+1. Get the code
+
 ```
-$ bundle
-$ rake db:migrate
+$ git clone https://github.com/kiyomaro927/Ditter_on_Rails.git
 ```
 
-#Run
+2. Install the gem packages
+
+```
+$ bundle install
+```
+
+3. Execute migration
+
+```
+$ bundle exec rake db:migrate
+```
+
+###Run
+
+Run ditter on WEBrick.
+
 ```
 $ rails server
 ```
