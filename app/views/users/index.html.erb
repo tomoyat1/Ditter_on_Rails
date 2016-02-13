@@ -108,43 +108,23 @@
         </div>
         <!-- List group -->
         <ul class="list-group">
-          <li class="list-group-item">
-            <div class="container-fluid">
-              <h5>user_name</h5>
-              <p class="small text-muted reply-to">@screen_name</p>
-              <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-              <p class="small">created_at: 2015/9/30 17:49:11</p>
-              <p class="text-right">
-                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true"></span>　返信する
-                </button>
-                <a href="">
-                  <button type="submit" class="btn btn-danger" name="delete_post">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>　削除する
-                  </button>
-                </a>
-              </p>
-            </div>
-          </li>
 		  <% @current_user.posts.each do |post| %>
+		  <% if post.id != nil %>
 		  <li class="list-group-item">
             <div class="container-fluid">
               <h5><%= @current_user.user_name %></h5>
-              <p class="small text-muted reply-to">@screen_name</p>
+              <p class="small text-muted reply-to">@<%= @current_user.screen_name %></p>
               <p><%= post.text %></p>
-              <p class="small">created_at: 2015/9/30 17:49:11</p>
+              <p class="small">created_at: <%= post.created_at %></p>
               <p class="text-right">
                 <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true"></span>　返信する
+                返信する
                 </button>
-                <a href="">
-                  <button type="submit" class="btn btn-danger" name="delete_post">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>　削除する
-                  </button>
-                </a>
+				<%= link_to "削除する", user_post_path(post.user_id, post.id), method: :delete, :class => "btn btn-danger" %> 
               </p>
             </div>
           </li>
+		  <% end %>
 		  <% end %>
         </ul>
       </div>
