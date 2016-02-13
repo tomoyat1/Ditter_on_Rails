@@ -6,7 +6,7 @@ I developed this based on the [DIT textbook](https://github.com/dit-rohm/textboo
 
 This has been provided in the CC License by DIT since 2015.
 
-![License](http://creativecommons.org/licenses/by-nc/4.0/)
+[![License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png/)](http://creativecommons.org/licenses/by-nc/4.0/)
 
 ###Versions
 - Ruby 2.1.7
@@ -14,19 +14,19 @@ This has been provided in the CC License by DIT since 2015.
 
 ###Getting started
 
-1. Get the code
+Get the code.
 
 ```
 $ git clone https://github.com/kiyomaro927/Ditter_on_Rails.git
 ```
 
-2. Install the gem packages
+Install the gem packages.
 
 ```
 $ bundle install
 ```
 
-3. Execute migration
+Execute migration.
 
 ```
 $ bundle exec rake db:migrate
