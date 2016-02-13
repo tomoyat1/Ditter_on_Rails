@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :posts
 	validates :user_name, presence: { message: "No user_name given"}
 	validates :screen_name, presence: { message: "No screen_name given"}
 	validates :email, presence: { message: "No email given"}
