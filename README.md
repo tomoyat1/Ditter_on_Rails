@@ -6,7 +6,7 @@ I developed this based on the [DIT textbook](https://github.com/dit-rohm/textboo
 
 This has been provided in the CC License by DIT since 2015.
 
-[![License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png/)](http://creativecommons.org/licenses/by-nc/4.0/)
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 
 ###Versions
 - Ruby 2.1.7
