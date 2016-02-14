@@ -15,3 +15,11 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+//Filling a reply's destination
+$(function () {
+    $('.reply-btn').click(function () {
+        var $screen_name = $(this).parent().siblings('.reply-to').text();
+        $('#replyText').val($screen_name + ' ');
+    });
+});
