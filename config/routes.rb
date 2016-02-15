@@ -1,5 +1,6 @@
 DitterOnRails::Application.routes.draw do
   
+  get "reply" => "users#reply"
   get "signup"  =>  "users#new"
   get "signin"  =>  "sessions#new"
   post "signin"  =>  "sessions#create"
