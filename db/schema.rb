@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160213064842) do
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "in_replay_to_user_id"
+    t.integer  "in_reply_to_user_id"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
