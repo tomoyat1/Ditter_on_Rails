@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     text = post_params
     replyUserId = getReplyId(text[:text])
-    @post = @user.posts.create(in_replay_to_user_id: replyUserId, text: text[:text])
+    @post = @user.posts.create(in_reply_to_user_id: replyUserId, text: text[:text])
     redirect_to users_path
   end
 
