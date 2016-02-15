@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def reply
+    if !signed_in?
+      redirect_to signin_path
+    end
+    @reply_posts = Post.find(:all, :conditions => { :in_replay_to_user_id => current_user.id }, :order => "created_at DESC")
+  end
+
   def new
     @user = User.new
   end
