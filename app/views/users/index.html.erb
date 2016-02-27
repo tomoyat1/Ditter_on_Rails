@@ -93,12 +93,13 @@
           <h3 class="panel-title">新規投稿</h3>
         </div>
         <div class="panel-body">
-          <form action="index.php" method="post">
-            <div class="form-group">
-              <textarea class="form-control" id="postText" name="postText" maxlength="140"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">投稿</button>
-          </form>
+          <%= form_for [@current_user, @current_user.posts.build] do |f| %>
+		  <div class="form-group">
+			<%= f.label :text, "メッセージ（140字まで） :" %>
+			<%= f.text_area :text, :class => "form-control", :maxlength => "140" %>
+		  </div>
+		  <%= f.submit '投稿する', :class => "btn btn-primary" %>
+		  <% end %>
         </div>
       </div>
       <!-- 全員の投稿表示領域 -->
